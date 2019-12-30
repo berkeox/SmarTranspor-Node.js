@@ -1,0 +1,70 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+               <a class="navbar-brand" style="color: white" href="/">SmartTransport</a>  
+            
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                 <li><a class="navbar-brand" style="color: white" href="/Durak">Durak</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Hat">Hat</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Kullanici">Kullanıcı</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Tasit">Taşıt</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+<div class="jumbotron jumbotron-fluid" style="height: 125px; text-align: center">
+        <h2 style="text-align: center; padding-bottom: 100px !important">Taşıt Listesi</h2>
+    </div>
+        <p>
+          <a href="/Tasit/Create">Yeni Kayıt</a>
+        </p>
+        <table class="table">
+            <tr>
+                  <th>
+                   <p><b>Taşıt ID</b></p>  
+                 </th>
+                <th>
+                    <p><b>Taşıt Adı</b></p>
+                </th>
+                <th>
+                   <p><b>Taşıt Türü</b></p>
+                </th>
+                <th></th>
+            </tr>
+            <% for(var i=0; i<TaşıtData.length;i++) {  %>
+                    <tr>
+                    <td>
+                    <p><%-TaşıtData[i].TaşıtID%></p>
+                    </td>
+                    <td> 
+                        <p><%-TaşıtData[i].TaşıtAdı%></p>
+                    </td>
+                    <td>
+                        <p><%-TaşıtData[i].TaşıtTürü%></p>
+                    </td>
+
+                  
+                    <td>
+                       <a href="/Tasit/Edit/<%-TaşıtData[i].TaşıtID%>">Düzenle</a> |
+                       <a href="/Tasit/Details/<%-TaşıtData[i].TaşıtID%>">Detaylar</a> |
+                       <a href="/Tasit/Delete/<%-TaşıtData[i].TaşıtID%>">Sil</a>
+                    </td>
+                </tr>
+               <% } %>
+            
+        </table>
+  <script>
+        </script>
+</body>
+
+</html>

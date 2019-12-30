@@ -1,0 +1,78 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+           <a class="navbar-brand" style="color: white" href="/">SmartTransport</a>  
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                          <li><a class="navbar-brand" style="color: white" href="/Durak">Durak</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Hat">Hat</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Kullanici">Kullanıcı</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Tasit">Taşıt</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<div class="jumbotron jumbotron-fluid" style="height: 125px; text-align: center">
+<h2 style="text-align: center">Hat Listesi</h2>
+</div>
+        <p>
+            <a href="/Hat/Create">Yeni Kayıt</a>
+        </p>
+        <table class="table">
+            <tr>
+            <th>
+            <p><b>Hat ID</b></p>
+            </th>
+                <th>
+                   <p><b>Taşıt ID</b></p>
+                </th>
+                <th>
+                    <p><b>Durak No</b></p>
+                </th>
+                <th></th>
+            </tr>
+            
+             <% for(var i=0; i<HatData.length;i++) {  %>
+                    <tr>
+                    <td>
+                      <p><%-HatData[i].ID%></p>
+                    </td>
+                    <td> 
+                        <p><%-HatData[i].TaşıtID%></p>
+                    </td>
+                    <td>
+                        <p><%-HatData[i].DurakNo%></p>
+                    </td>
+                    <td>
+                       <a href="/Hat/Edit/<%-HatData[i].ID%>">Düzenle</a> |
+                       <a href="/Hat/Details/<%-HatData[i].ID%>">Detaylar</a> |
+                       <a href="/Hat/Delete/<%-HatData[i].ID%>">Sil</a>
+                    </td>
+                </tr>
+            <% } %>
+           
+        </table>
+</body>
+</html>

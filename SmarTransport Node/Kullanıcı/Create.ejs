@@ -1,0 +1,99 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                 <a class="navbar-brand" style="color: white" href="/">SmartTransport</a>  
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                 <li><a class="navbar-brand" style="color: white" href="/Durak">Durak</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Hat">Hat</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Kullanici">Kullanıcı</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Tasit">Taşıt</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid" style="height: 125px; text-align: center">
+        <h2>Kullanıcı Yeni Kayıt</h2>
+
+    </div>
+<form action="/Kullanici/Create/Submit" method="post">
+      <div class="form-horizontal">               
+                <br>           
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="email">Email</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="email" name="email" type="text" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="">şifre</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" name="şifre" type="text" value="" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="şifre" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="isim">isim</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="isim" name="isim" type="text" value="" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="isim" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="soyisim">soyisim</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="soyisim" name="soyisim" type="text" value="" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="soyisim" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="telefon">telefon</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="telefon" name="telefon" type="text" value="" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="telefon" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="adres">adres</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="adres" name="adres" type="text" value="" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="adres" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="cinsiyet">cinsiyet</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="cinsiyet" name="cinsiyet" type="text" value="" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="cinsiyet" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Kaydet" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+</form>
+        <div>
+            <a href="/Kullanici">Listeye dön</a>
+        </div>
+
+
+</body>
+</html>

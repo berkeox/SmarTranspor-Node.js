@@ -1,0 +1,105 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top" style="border-radius: 0px; background-color:#4267B2;  ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" style="color: white" href="/">SmartTransport</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" style="color: white" href="/">Anasayfa</a></li>
+                <li><a class="navbar-brand" style="color: white" href="/About">Hakkında</a></li>
+                <li><a class="navbar-brand" style="color: white" href="/Contact">İletişim</a></li>
+                <li><a class="navbar-brand" style="color: white" href="/SSS">SSS</a></li>
+
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+<li data-toggle="modal" data-target="#uyegiris"><a style="color:white"><span class="glyphicon glyphicon-user"></span> Yönetici Girişi</a></li>            </ul>
+        </div>
+    </nav>
+<br>
+<br>
+
+
+
+    
+<h1 style="text-align: center">İletişim</h1>
+<hr/>
+<address>
+    
+    
+    <div class="jumbotron" style="text-align:center">
+         <div>
+        <table style="border: 10px; text-align:center">
+   
+        <tr>
+         
+                <td>   <strong>Öğrenci numarası</strong> </td>
+                <td>   <strong>Adı soyadı</strong> </td>
+                <td>   <strong>E-mail</strong></td>
+            </tr>
+            <tr>
+                <td>162805012</td>
+                <td>Beyza ONAR</td>
+                <td><a href="mailto:Beyza.onar2013@gmail.com">beyza.onar2013@gmail.com</a> </td>
+            </tr>
+            <tr>
+                <td>172803011</td>
+                <td>Berke ÖNCÜL</td> 
+                 <td> <a href="mailto:berkeoncul4@gmail.com">berkeoncul4@gmail.com</a></td>
+            </tr>
+            <tr>
+                <td>162804012</td>
+                <td>Merve ÇELİK</td>
+                  <td><a href="mailto:Clkmerve3@gmail.com">clkmerve3@gmail.com</a></td>
+            </tr>
+            <tr>
+                <td>172803016</td>
+                <td>Bünyamin KÜÇÜK</td>
+                  <td> <a href="mailto:bun.33371@gmail.com">bun.33371@gmail.com</a></td>
+            </tr>
+        </div>
+            
+        </table>
+    </div>
+    
+</address>
+
+     <form action="/YoneticiPaneli/Submit" method="post">
+<div   class="modal fade" id="uyegiris" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div  class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div style="color: #4267b2 !important" class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Yönetici Girişi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                      
+
+                    </div>
+                    <div  style="color: #4267b2"class="modal-body">
+                        <form action="../Home/giris.html" method="POST">
+                            <label>Email:</label>
+                             <input class="form-control text-box single-line" id="email" name="email" type="text" placeholder="Email" >
+
+
+                            <label>Şifre:</label>
+                           <input class="form-control text-box single-line" name="şifre" type="text" value=""  placeholder="Şifre"/>
+
+
+                            <br>
+                            <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>
+
+ 
+</body>
+</html>

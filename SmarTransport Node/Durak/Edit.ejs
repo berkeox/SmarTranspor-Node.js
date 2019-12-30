@@ -1,0 +1,77 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                 <a class="navbar-brand" style="color: white" href="/">SmartTransport</a>  
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                          <li><a class="navbar-brand" style="color: white" href="/Durak">Durak</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Hat">Hat</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Kullanici">Kullanıcı</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Tasit">Taşıt</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+<div class="jumbotron jumbotron-fluid" style="height: 125px; text-align: center">
+        <h2>Durak Düzenle</h2>
+    </div>
+
+<form action="/Durak/Edit/Submit/<%-DurakData[0].DurakNo%>" method="post"><input name="__RequestVerificationToken" type="hidden" value="C_VcwBFkwDvMZC5lL6l54mzz0v0CTDHcKBvBADHmFw9u0OzUBA-45QaYnVOuuORqh_mtzGema5UTZyolK1EClOx-CAQLACT23SvdjiGiYhI1" />            <div class="form-horizontal">
+                <br>
+                <input data-val="true" data-val-number="The field DurakNo must be a number." data-val-required="DurakNo alanı gereklidir." id="DurakNo" name="DurakNo" type="hidden" value="5" />
+
+                <div class="form-group" style="text-align: center">
+                    <label class="control-label col-md-2" for="DurakAd">DurakAd</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="DurakAd" name="DurakAd" type="text" value="  <%-DurakData[0].DurakAd%>" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="DurakAd" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Lat">Lat</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="Lat" name="Lat" type="text" value="  <%-DurakData[0].Lat%>" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="Lat" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Lng">Lng</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="Lng" name="Lng" type="text" value="  <%-DurakData[0].Lng%>" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="Lng" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="DurakTürü">DurakTürü</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="DurakTürü" name="DurakTürü" type="text" value="  <%-DurakData[0].DurakTürü%>" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="DurakTürü" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Kaydet" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+</form>
+        <div>
+            <a href="/Durak">Listeye dön</a>
+        </div>     
+</body>
+
+</html>

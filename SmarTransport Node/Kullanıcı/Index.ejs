@@ -1,0 +1,94 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+            <a class="navbar-brand" style="color: white" href="/">SmartTransport</a>  
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                     <li><a class="navbar-brand" style="color: white" href="/Durak">Durak</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Hat">Hat</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Kullanici">Kullanıcı</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Tasit">Taşıt</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+<div class="jumbotron jumbotron-fluid" style="height: 125px; text-align: center">
+        <h2 style="text-align: center">Kullanıcı Listesi</h2>
+    </div>
+        <p>
+             <a  href="/Kullanici/Create">Yeni Kayıt</a>
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    <p><b>Kullanıcı ID</b></p>
+                </th>
+                <th>
+                     <p><b>Kullanıcı Mail</b></p>
+                </th>
+                <th>
+                    <p><b>Kullanıcı İsim</b></p>
+                </th>
+                <th>
+                     <p><b>Kullanıcı Soyisim</b></p>
+                </th>
+                <th>
+                    <p><b>Kullanıcı Telefon</b></p>
+                </th>
+                <th>
+                     <p><b>Kullanıcı Adres</b></p>
+                </th>
+                <th>
+                     <p><b>Kullanıcı Cinsiyeti</b></p>
+                </th>
+                <th></th>
+            </tr>
+         
+           <% for(var i=0; i<KullanıcıData.length;i++){  %>
+                
+                    <tr>
+                    <td>
+                        <p ><%-KullanıcıData[i].ID%></p>
+                    </td>
+                    <td>
+                        <p><%-KullanıcıData[i].email%></p>
+                    </td>
+
+                    <td>
+                        <p><%-KullanıcıData[i].isim%></p>
+                    </td>
+                    <td>
+                        <p><%-KullanıcıData[i].soyisim%></p>
+                    </td>
+                    <td>
+                        <p><%-KullanıcıData[i].telefon%></p>
+                    </td>
+                    <td>
+                        <p><%-KullanıcıData[i].adres%></p>
+                    </td>
+                    <td>
+                        <p><%-KullanıcıData[i].cinsiyet%></p>
+                    </td>
+                    <td>
+                    <a  href="/Kullanici/Edit/<%-KullanıcıData[i].ID%>">Düzenle</a> |
+                    <a  href="/Kullanici/Details/<%-KullanıcıData[i].ID%>">Detaylar</a> |
+                    <a  href="/Kullanici/Delete/<%-KullanıcıData[i].ID%>">Sil</a>
+                    </td>
+                    </tr>
+               <% }%>            
+        </table>
+
+        
+</body>
+
+</html>

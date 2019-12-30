@@ -1,0 +1,61 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+           <a class="navbar-brand" style="color: white" href="/">SmartTransport</a>  
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                         <li><a class="navbar-brand" style="color: white" href="/Durak">Durak</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Hat">Hat</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Kullanici">Kullanıcı</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Tasit">Taşıt</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<div class="jumbotron jumbotron-fluid" style="height: 125px; text-align: center">
+        <h2>Hat Düzenle</h2>
+    </div>
+
+<form action="/Hat/Edit/Submit/<%-HatData[0].ID%>" method="post">
+            <div class="form-horizontal">
+                <br>                
+                <input data-val="true" data-val-number="The field ID must be a number." data-val-required="ID alanı gereklidir." id="ID" name="ID" type="hidden" value="5" />
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Ta__tID">TaşıtID</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" data-val="true" data-val-number="The field TaşıtID must be a number." id="TaşıtID" name="TaşıtID" type="number" value="<%-HatData[0].TaşıtID%>" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="TaşıtID" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="DurakNo">DurakNo</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" data-val="true" data-val-number="The field DurakNo must be a number." id="DurakNo" name="DurakNo" type="number" value="<%-HatData[0].DurakNo%>" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="DurakNo" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Kaydet" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+</form>
+        <div>
+            <a href="/Hat">Listeye dön</a>
+        </div>
+</body>
+
+</html>

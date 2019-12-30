@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <style>
+        #header {
+            background-color: #e9ece5;
+            float: left;
+            position: fixed;
+            width: 100%;
+            height: 18px !important;
+            align-self: auto;
+            margin-bottom: 20px;
+        }
+
+        #ana {
+            width: 100%;
+            height: 95%;
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+
+        #sag {
+            background-color: #e9ebee;
+            float: left;
+            border-color: black;
+            border-radius: 20px;
+            width: 70%;
+            height: 90% !important;
+            align-self: auto;
+            padding-bottom: 40px;
+            padding-right: 10px;
+            padding-left: 10px;
+            margin-left: 20px;
+        }
+
+        #sol {
+            background-color: #e9ebee;
+            border-radius: 20px;
+            float: left;
+            padding-top: 15px;
+            padding-right: 10px;
+            padding-left: 10px;
+            width: 20%;
+            height: 90% !important;
+            align-self: auto;
+            margin-left: 10px;
+        }
+
+        .head {
+            width: 1364px;
+            height: 75px;
+            text-align: center;
+            background-color: #b3c2bf;
+        }
+
+        h2 {
+            padding: 1%;
+            color: white;
+        }
+
+        body {
+            background-color: white;
+        }
+
+        .butonum {
+            background-color: chocolate;
+            color: white;
+            border: 2px black;
+            display: inline-block;
+            text-align: center;
+            box-shadow: red;
+            width: 200px;
+            height: 40px;
+        }
+        /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+        #map {
+            border-radius: 20px;
+            width: 100%;
+            height: 92%;
+            margin-bottom: 10px;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #floating-panel {
+            position: absolute;
+            top: 10px;
+            left: 25%;
+            z-index: 5;
+            background-color: #fff;
+            padding: 5px;
+            border: 1px solid #999;
+            text-align: center;
+            font-family: 'Roboto', 'sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+        }
+    </style>
+
+
+</head>
+
+<body onload="BilgileriAl();">
+
+  <nav class="navbar navbar-fixed-top" style="border-radius: 0px; background-color:#4267B2;  ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" style="color: white" href="/">SmartTransport</a>
+            </div>
+            <ul class="nav navbar-nav">
+       
+                <li><a class="navbar-brand" style="color: white" href="/">Anasayfa</a></li>
+                <li><a class="navbar-brand" style="color: white" href="/About">Hakkında</a></li>
+                <li><a class="navbar-brand" style="color: white" href="/Contact">İletişim</a></li>
+                <li><a class="navbar-brand" style="color: white" href="/SSS">SSS</a></li>
+
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li data-toggle="modal" data-target="#uyegiris"><a style="color:white"><span class="glyphicon glyphicon-user"></span> Yönetici Girişi</a></li>
+            </ul>
+        </div>
+    </nav>
+<br>
+<br>
+<br>
+  
+
+
+        <div id="ana">
+            <div id="sol">
+                <div style="text-align: center; color: #4267B2; font-family: Arial;" id="önceki"><span class="glyphicon glyphicon-road"></span><p>ÖNERİLEN GÜZERGAHLAR</p> </div>
+            </div>
+
+            <div id="sag">
+                <div style="padding-top: 10px;">
+               
+
+                    <button type="button" class="btn btn-primary" onclick="selectEnd = true, selectStart = false" style="float: right;">Son seç</button>
+                    <button type="button" class="btn btn-primary" onclick="selectStart = true, selectEnd = false " style="float: right;">Başlangıç seç</button>
+                    <button type="button" class="btn btn-primary" onclick="PutMarkers();" style="float: right;">İmleç koy</button>
+                    <button type="button" class="btn btn-primary" onclick="RemoveMarkers();" style="float: right;">İmleç kaldır</button>
+                    <button type="button" class="btn btn-primary" onclick="a();" style="float: right;">İmleçfasfas kaldır</button>
+ 
+                    <br>
+                 
+                </div>
+                <hr>
+
+                <div id="map"></div>
+            </div>
+        </div>
+
+        <form action="/YoneticiPaneli/Submit" method="post">
+<div   class="modal fade" id="uyegiris" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div  class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div style="color: #4267b2 !important" class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Yönetici Girişi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                      
+
+                    </div>
+                    <div  style="color: #4267b2"class="modal-body">
+                        <form action="../Home/giris.html" method="POST">
+                            <label>Email:</label>
+                             <input class="form-control text-box single-line" id="email" name="email" type="text" placeholder="Email" >
+
+
+                            <label>Şifre:</label>
+                           <input class="form-control text-box single-line" name="şifre" type="text" value=""  placeholder="Şifre"/>
+
+
+                            <br>
+                            <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>
+         
+<script>
+
+
+    function BilgileriAl() {
+        var data =<%-Data%>; 
+       
+  
+      Stops= data.recordset
+
+        console.log(Stops);
+
+    }
+    function a()
+    {
+        console.log(startWalkableStops);
+        console.log(endWalkableStops);
+    }
+
+
+    var StartingPos;
+    var EndingPos;
+    var selectStart = false;
+    var selectEnd = false;
+    var Stops;
+    var startWalkableStops = [];
+    var endWalkableStops = [];
+    var availabeTransports = [];
+    var i = 0;
+    var map;
+    var markers = [];
+    
+
+    function initMap() {
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var geocoder = new google.maps.Geocoder;
+        var infowindow = new google.maps.InfoWindow;
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: { lat: 38.424585, lng: 27.143568 }
+        });
+        directionsDisplay.setMap(map);
+
+
+        map.addListener('click', function (e) {
+            if (StartingPos != null && EndingPos != null)
+            {
+              
+                StartOrEndPosChanged(e.latLng);
+            }
+                
+
+            GetCoordinates(e.latLng);
+
+            if (StartingPos != null && EndingPos != null) {
+                  
+                calculateAndDisplayRoute(directionsService, directionsDisplay);
+                GetClosestStops();
+
+            }
+        });
+
+    }
+
+
+    var sayacc = 0;
+    var appended = false;
+    function AppendElement(item) {
+      item=item[0];
+
+        appended = true;
+        var dataTarget = "modal" + sayacc.toString();
+        sayacc++;
+
+           $("#önceki").append(
+            "<div class=\"panel panel-primary\" style=\"text-align: center; border-radius: 20px;\"><div  class=\"panel-heading\" style=\"border-radius: 15px;\" data-toggle=\"collapse\" data-target=\"#" +
+            dataTarget +
+            "\">" +item.TaşıtID+" "+
+            item.TaşıtAdı +
+            "</div><div id=\"" +
+            dataTarget +
+            "\" class=\"collapse\"><label>" +
+            item.TaşıtTürü +
+           "</label><br><br><br></div></div>");
+
+   
+    }
+
+   
+
+    function NotFound() {
+
+        appended = true;
+        $("#önceki").append("<br> <p style=\"text-align:center;\">Size uygun bir taşıt bulunamadı.</p>");
+
+
+    }
+
+
+
+    function Reset() {
+        startWalkableStops = [];
+        endWalkableStops = [];
+        availabeTransports = [];
+        $("#önceki").empty();
+        appended = false;
+        answernumber = 0;
+        callnumber = 0;
+        sayacc = 0;
+    }
+
+    function PutMarkers() {
+        if (markers.length == 0) {
+            for (var i = 0; i < Stops.length; i++) {
+                var marker = new google.maps.Marker({
+                    position: { lat: parseFloat(Stops[i].Lat), lng: parseFloat(Stops[i].Lng) },
+                    map: map, 
+                    title: Stops[i].DurakAdi,
+                    
+                   
+                });
+                markers.push(marker);
+            }
+        }
+    }
+
+             
+    function RemoveMarkers() {
+        for (var i = 0; i < Stops.length; i++) {
+    
+            markers[i].setMap(null);
+        }
+        markers = [];
+    }
+
+
+
+
+
+
+    function placeMarker(location) {
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+        markers.push(marker);
+
+    }
+
+
+    function OnMyMethodComplete(result, userContext, methodName) {
+
+        alert(result);
+        return result;
+
+    }
+
+
+    function StartOrEndPosChanged(newCoord) {
+
+        if ((selectStart && newCoord != StartingPos) || (selectEnd && newCoord != EndingPos))
+            Reset();
+
+    }
+
+
+    function GetClosestStops() {
+
+        for (var i = 0; i < Stops.length; i++)  //BANA EN YAKIN DURAKLARI BUL (15 DAKİKA YÜRÜME MESAFESİ)
+        {
+            IsWalkable(StartingPos, Stops[i].Lat + "," + Stops[i].Lng, startWalkableStops, i, false);
+            IsWalkable(EndingPos, Stops[i].Lat + "," + Stops[i].Lng, endWalkableStops, i, true);
+        }
+
+              
+    }
+
+    function FindTransportation(length1, length2) {
+         
+        for (var i = 0; i < length1; i++) {
+            for (var x = 0; x < length2; x++) {
+
+                GetCommonBuses(i, x);
+
+            }
+        }
+    }
+
+    function GetCommonBuses(index1, index2) {
+                 
+
+      console.log("çağırdım");
+    
+        $.ajax({
+                type: "POST",
+               url: "http://localhost:1337/CommonTransport/"+startWalkableStops[index1].DurakNo+"/"+endWalkableStops[index2].DurakNo,
+               // data: JSON.stringify({ DurakNo1: startWalkableStops[index1].DurakNo, DurakNo2: endWalkableStops[index2].DurakNo }),
+                contentType: "application/json; charset:utf-8",
+                dataType: "json"
+            })
+            .done(function (res) {
+            var a=[];
+
+
+            var i=0;
+            while(typeof res[i]!="undefined")
+            {
+                a.push(JSON.parse(res[i]));
+                console.log("cev:"+res[i]);
+                i++;
+            }
+            
+            
+                
+                 
+                 if(typeof a !="undefined")
+                PushToAvailableTransports(a);
+
+            });
+    }
+
+    function PushToAvailableTransports(res) {
+
+
+        for (var x = 0; x < availabeTransports.length; x++) {
+            var i = 0;
+
+            do {
+
+                if (typeof  res[i] == "undefined"|| availabeTransports[x].TaşıtID == res[i].TaşıtID) {
+                    i++;
+                    return;
+                }
+                    
+            } while (typeof  res[++i] != "undefined")
+        }
+
+
+        var i = 0;
+        do {
+            if (typeof res[i] != "undefined")
+           {
+            console.log("ekledim"+res[i]);
+            availabeTransports.push(res[i]);
+            AppendElement(res[i]);
+           }
+            
+
+        } while (res[++i] != undefined)
+
+      
+
+        if (!appended)
+            NotFound();
+    }
+
+
+    var callnumber = 0;
+     var answernumber = 0;
+
+    function IsWalkable(Pos1, Pos2, posArray, index, sonFonks) {
+        
+        const Pos1Lat = StringfyCoordinates(Pos1).split(",")[0];
+        const Pos1Lng = StringfyCoordinates(Pos1).split(",")[1];
+        const Pos2Lat = Pos2.split(",")[0];
+        const Pos2Lng = Pos2.split(",")[1];
+
+
+        const pos1Avg = GetAverage(parseFloat(Pos1Lat), parseFloat(Pos1Lng));
+        const pos2Avg = GetAverage(parseFloat(Pos2Lat), parseFloat(Pos2Lng));
+
+
+        if (Math.abs(pos1Avg - pos2Avg) > 0.0061)
+            return;
+
+            callnumber++;
+
+
+        const origins = Pos1Lat + "," + Pos1Lng;
+        const destination = "&destinations=" + Pos2Lat + "," + Pos2Lng;
+        const api = " https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&mode=walking&origins=";
+        const key = "&key=AIzaSyBrSXa1GltObLUSO5cjvNOc67dKLch8ttQ";
+
+        const url = api + origins + destination + key;
+
+
+        $.ajax(url)
+            .done(function (response) {
+              answernumber++;
+        
+                if (response.rows[0].elements[0].duration.text.includes("saat")) {
+                   
+
+                }
+                else if (parseInt(response.rows[0].elements[0].duration.text.split("dakika")[0], 10) > 15) {
+                   
+
+                } //15 Dakikadan uzak ise
+                else {
+                   
+                    posArray.push(Stops[index]);
+                }
+
+             
+                if (sonFonks && callnumber === answernumber) {
+                         
+                    FindTransportation(startWalkableStops.length, endWalkableStops.length);
+
+                   
+                }
+
+            });
+
+    }
+
+
+    function GetAverage(Number1, Number2) {
+        return (Number1 + Number2) / 2;
+    }
+
+    function CalculateDistanceDuration(Pos1 = StartingPos, Pos2 = EndingPos) {
+        var origins = StringfyCoordinates(Pos1);
+        var destination = "&destinations=" + StringfyCoordinates(Pos2);
+        var api = " https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=";
+        var key = "&key=AIzaSyBrSXa1GltObLUSO5cjvNOc67dKLch8ttQ";
+
+        var url = api + origins + destination + key;
+
+
+        axios.get(url)
+            .then(function (response) {
+
+
+                alert(response.data.rows[0].elements[0].distance.text + "  " + response.data.rows[0].elements[0].duration.text);
+
+            })
+            .catch(function (error) {
+                console.log(error);
+
+            })
+        // https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=38.734511201032056,%2027.039604469266123&destinations=38.571392969685405,%2027.215665778320272&key=AIzaSyAW3iSCRaIQVUTncesQtymCE6MY9d5tRJA
+    }
+
+    function StringfyCoordinates(Coord) {
+        var stringCoord = JSON.stringify(Coord);
+
+
+        var latExcluded = stringCoord.split("{\"lat\":");
+        var lngExcluded = latExcluded[1].split("\"lng\":");
+        var curlExcluded = lngExcluded[1].split("}");
+
+        return lngExcluded[0] + curlExcluded[0];
+
+
+    }
+
+    function GetCoordinates(Coordinates) {
+        if (selectStart)
+            StartingPos = Coordinates;
+        else if (selectEnd)
+            EndingPos = Coordinates;
+    }
+
+
+    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        directionsService.route({
+            origin: StartingPos,
+            destination: EndingPos,
+            travelMode: 'DRIVING'
+        }, function (response, status) {
+            if (status === 'OK') {
+
+                directionsDisplay.setDirections(response);
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    }
+</script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrSXa1GltObLUSO5cjvNOc67dKLch8ttQ&callback=initMap">
+        </script>
+</body>
+
+</html>
+

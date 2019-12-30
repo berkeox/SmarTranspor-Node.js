@@ -1,0 +1,60 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+             <a class="navbar-brand" style="color: white" href="/">SmartTransport</a>  
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+               <li><a class="navbar-brand" style="color: white" href="/Durak">Durak</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Hat">Hat</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Kullanici">Kullanıcı</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Tasit">Taşıt</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+<div class="jumbotron jumbotron-fluid" style="height: 125px; text-align: center">
+        <h2>Taşıt Detayları</h2>
+    </div>
+        <div>
+        <br>
+            <dl class="dl-horizontal">
+            <dt>
+            Taşıt ID
+            </dt>
+            <dd>
+            <%-TaşıtData[0].TaşıtID%>
+            </dd>
+                <dt>
+                    TaşıtAdı
+                </dt>
+
+                <dd>
+                    <%-TaşıtData[0].TaşıtAdı%>
+                </dd>
+
+                <dt>
+                    Taşıt Türü
+                </dt>
+
+                <dd>
+                    <%-TaşıtData[0].TaşıtTürü%>
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            <a href="/Tasit/Edit/<%-TaşıtData[0].TaşıtID%>">Düzenle</a> |
+            <a href="/Tasit">Listeye dön</a>
+        </p>
+</body>
+
+</html>

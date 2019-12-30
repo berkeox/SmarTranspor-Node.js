@@ -1,0 +1,100 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+             <a class="navbar-brand" style="color: white" href="/">SmartTransport</a>  
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                   <li><a class="navbar-brand" style="color: white" href="/Durak">Durak</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Hat">Hat</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Kullanici">Kullanıcı</a></li>
+                    <li><a class="navbar-brand" style="color: white" href="/Tasit">Taşıt</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+<div class="jumbotron jumbotron-fluid" style="height: 125px; text-align: center">
+        <h2>Kullanıcı Detaylar</h2>
+    </div>
+        <div>
+            <br>
+            <dl class="dl-horizontal">
+                <dt>
+                    ID
+                </dt>
+                <dd>
+                   <%-KullanıcıData[0].ID%>
+                </dd>
+                <dt>
+                    Email
+                </dt>
+                <dd>
+                   <%-KullanıcıData[0].email%>
+                </dd>
+                <dt>
+                    Şifre
+                </dt>
+                <dd>
+                    <%-KullanıcıData[0].şifre%>
+                </dd>
+                <dt>
+                    İsim
+                </dt>
+
+                <dd>
+                    <%-KullanıcıData[0].isim%>
+                </dd>
+
+                <dt>
+                    Soyisim
+                </dt>
+
+                <dd>
+                    <%-KullanıcıData[0].soyisim%>
+                </dd>
+
+                <dt>
+                    Telefon
+                </dt>
+
+                <dd>
+                    <%-KullanıcıData[0].telefon%>
+                </dd>
+
+                <dt>
+                   Adres
+                </dt>
+
+                <dd>
+                    <%-KullanıcıData[0].adres%>
+                </dd>
+
+                <dt>
+                    Cinsiyet
+                </dt>
+
+                <dd>
+                   <%-KullanıcıData[0].cinsiyet%>
+                </dd>
+
+
+            </dl>
+        </div>
+        <p>
+            <a href="/Kullanici/Edit/<%-KullanıcıData[0].ID%>">Düzenle</a> |
+            <a href="/Kullanici">Listeye dön</a>
+        </p>
+
+
+</body>
+
+</html>
