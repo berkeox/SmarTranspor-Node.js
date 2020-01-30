@@ -4,3 +4,6 @@ SmarTransport bir toplu taşıma rehberidir. Bulunduğunuz noktayı ve gideceği
 
 Bu projenin BACK-END kısmı Javascript Frameworku olan Node.js ile yapılmıştır.
 Serverı çalıştıran ana dosya Express.js'dir.
+
+
+Kullanılan Teknolojiler ve araçlar: Visual Studio Code,Javascript, Node.js, HTML, CSS, Microsoft SQL
